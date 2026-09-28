@@ -2,6 +2,8 @@ module github.com/containrrr/watchtower
 
 go 1.26.0
 
+toolchain go1.27.1
+
 require (
 	github.com/containerd/errdefs v1.0.0
 	github.com/containrrr/shoutrrr v0.8.0
