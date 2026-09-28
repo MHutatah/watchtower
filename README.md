@@ -1,7 +1,11 @@
 <div align="center">
 
-  ### ⚠️ This project is no longer maintained
-  See https://github.com/containrrr/watchtower/discussions/2135 for details.
+  ### MHutatah's maintained fork
+
+  The upstream project, [containrrr/watchtower](https://github.com/containrrr/watchtower),
+  was archived on 2025-12-17 and is no longer maintained
+  ([discussion #2135](https://github.com/containrrr/watchtower/discussions/2135)).
+  This fork keeps it working on current Docker releases.
 
   ---
   
@@ -23,6 +27,23 @@
   [![Pulls from DockerHub](https://img.shields.io/docker/pulls/containrrr/watchtower.svg)](https://hub.docker.com/r/containrrr/watchtower)
 
 </div>
+
+## About this fork
+
+Changes from upstream v1.7.1:
+
+- Docker client moved from `docker/docker` v24 to the moby v29 modules
+  (`moby/moby/client`, `moby/moby/api`). The API version is negotiated with the
+  daemon by default; `--api-version` / `DOCKER_API_VERSION` pins it only when set.
+  Upstream pinned API 1.25, which Docker 29 rejects unless the daemon is started
+  with `DOCKER_MIN_API_VERSION`.
+- Go 1.26 and current dependencies; `govulncheck` clean.
+- Images: `ghcr.io/mhutatah/watchtower:<version>` for `linux/amd64` and
+  `linux/arm64`. Only version tags are published, never `:latest`.
+
+The client migration used [nicholas-fedor/watchtower](https://github.com/nicholas-fedor/watchtower)
+(Apache-2.0) at `709ae76a740ddfe81dc62edefc94ff4f3d5c0d8d` (v1.22.3) as a
+reference. No code was copied wholesale.
 
 ## Quick Start
 
